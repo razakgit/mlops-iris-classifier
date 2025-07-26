@@ -1,3 +1,9 @@
 INFO:root:Input: {'sepal_length': 0.0, 'sepal_width': 0.0, 'petal_length': 0.0, 'petal_width': 0.0}, Prediction: 0
 INFO:root:Input: {'sepal_length': 4.9, 'sepal_width': 2.4, 'petal_length': 3.3, 'petal_width': 1.1}, Prediction: 1
 INFO:root:Input: {'sepal_length': 4.9, 'sepal_width': 2.4, 'petal_length': 3.3, 'petal_width': 1.9}, Prediction: 2
+INFO:root:Input: {'sepal_length': 5.1, 'sepal_width': 3.5, 'petal_length': 1.4, 'petal_width': 0.2}, Prediction: 0
+INFO:root:Input: {'sepal_length': 5.1, 'sepal_width': 3.5, 'petal_length': 1.4, 'petal_width': 0.2}, Prediction: 0
+INFO:root:Input: {'sepal_length': 5.1, 'sepal_width': 3.5, 'petal_length': 1.4, 'petal_width': 0.2}, Prediction: 0
+INFO:root:Input: {'sepal_length': 5.1, 'sepal_width': 3.5, 'petal_length': 1.4, 'petal_width': 0.2}, Prediction: 0
+INFO:root:Input: {'sepal_length': 5.1, 'sepal_width': 3.5, 'petal_length': 1.4, 'petal_width': 0.2}, Prediction: 0
+INFO:root:Input: {'sepal_length': 5.1, 'sepal_width': 3.5, 'petal_length': 1.4, 'petal_width': 0.2}, Prediction: 0
