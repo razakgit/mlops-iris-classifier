@@ -1,21 +1,45 @@
-name: CI/CD Pipeline 
+name: CI/CD Pipeline
 
 on: [push]
 
 jobs:
-  build:
+  build-test-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
+
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install flake8 pytest
+
+      - name: Lint code with flake8
+        run: |
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+      - name: Run unit tests with pytest
+        run: |
+          pytest tests/
+
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/iris-api .
+
       - name: Push Docker image
         run: |
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker push ${{ secrets.DOCKER_USERNAME }}/iris-api
+
+      # Optional: Deploy locally or via EC2/LocalStack
+      # Uncomment and adapt as per your setup
+      # - name: Deploy to EC2
+      #   run: |
+      #     ssh -i ~/.ssh/id_rsa ubuntu@your-ec2-ip 'docker pull your-image && docker run -d -p 80:5000 your-image'
