@@ -1,0 +1,10 @@
+artifact_location: file:///E:/mtech/mlops/mlops-iris-classifier/mlruns/629087234997048893/models/m-cfb994db1e934fa8ac320c24069830d9/artifacts
+creation_timestamp: 1753559729053
+experiment_id: '629087234997048893'
+last_updated_timestamp: 1753559738323
+model_id: m-cfb994db1e934fa8ac320c24069830d9
+model_type: null
+name: model
+source_run_id: 3a70632fe70b4877af41c25d4630a04d
+status: 2
+status_message: null

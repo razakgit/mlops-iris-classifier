@@ -1,0 +1,14 @@
+artifact_uri: file:///E:/mtech/mlops/mlops-iris-classifier/mlruns/629087234997048893/bca43b96a0b34c16bbb17dd08d1cbfd1/artifacts
+end_time: 1753559744028
+entry_point_name: ''
+experiment_id: '629087234997048893'
+lifecycle_stage: active
+run_id: bca43b96a0b34c16bbb17dd08d1cbfd1
+run_name: random_forest
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1753559738381
+status: 3
+tags: []
+user_id: Abdul Razak
