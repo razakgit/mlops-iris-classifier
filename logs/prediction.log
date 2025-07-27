@@ -7,3 +7,4 @@ INFO:root:Input: {'sepal_length': 5.1, 'sepal_width': 3.5, 'petal_length': 1.4, 
 INFO:root:Input: {'sepal_length': 5.1, 'sepal_width': 3.5, 'petal_length': 1.4, 'petal_width': 0.2}, Prediction: 0
 INFO:root:Input: {'sepal_length': 5.1, 'sepal_width': 3.5, 'petal_length': 1.4, 'petal_width': 0.2}, Prediction: 0
 INFO:root:Input: {'sepal_length': 5.1, 'sepal_width': 3.5, 'petal_length': 1.4, 'petal_width': 0.2}, Prediction: 0
+INFO:root:Input: {'sepal_length': 4.9, 'sepal_width': 3.6, 'petal_length': 1.4, 'petal_width': 0.2}, Prediction: 0

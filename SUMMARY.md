@@ -1,7 +1,7 @@
 # MLOps Iris Classification Pipeline Summary
 
 ## Tools Used
-- **GitHub**: Source control and CI/CD
+- **GitHub**: Source control and CI/CDs
 - **MLflow**: Experiment tracking
 - **FastAPI**: REST API for model inference
 - **Docker**: Containerization
@@ -23,4 +23,4 @@
 
 ## Monitoring
 - `/metrics` endpoint exposes Prometheus metrics
-- Logs written to `logs/prediction.log`
+- Logs written to `logs/prediction.log` 
