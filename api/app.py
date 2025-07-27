@@ -32,7 +32,7 @@ class FeedbackData(BaseModel):
     sepal_width: float
     petal_length: float
     petal_width: float
-    label: int
+    target: int
 
 @app.post("/feedback")
 def collect_feedback(data: FeedbackData):
@@ -66,7 +66,8 @@ def predict(input: IrisInput):
 @app.post("/retrain")
 def retrain_model():
     # Load original training data
-    orig_df = pd.read_csv("original_train.csv")
+
+    orig_df = pd.read_csv("data/iris.csv")
     
     # Append feedback data
     if os.path.exists("feedback.csv"):
@@ -75,12 +76,16 @@ def retrain_model():
     else:
         return {"message": "No feedback data to retrain on."}
 
-    X = combined_df.drop("label", axis=1)
-    y = combined_df["label"]
+ # Drop rows where label is NaN
+    combined_df = combined_df.dropna(subset=["target"])
+
+    X = combined_df.drop("target", axis=1)
+    y = combined_df["target"]
 
     model = RandomForestClassifier()
     model.fit(X, y)
 
     dump(model, "model.joblib")  # overwrite existing model
+    model = load("model.joblib")  # reload into memory
 
     return {"message": "Model retrained with feedback data."}
