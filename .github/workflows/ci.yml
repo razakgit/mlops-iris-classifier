@@ -40,8 +40,9 @@ jobs:
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker push ${{ secrets.DOCKER_USERNAME }}/iris-api
 
-      # Optional: Deploy locally or via EC2/LocalStack
-      # Uncomment and adapt as per your setup
-      # - name: Deploy to EC2
-      #   run: |
-      #     ssh -i ~/.ssh/id_rsa ubuntu@your-ec2-ip 'docker pull your-image && docker run -d -p 80:5000 your-image'
+
+      - name: Build Docker image
+        run: docker build -t iris-api .
+
+      - name: Run container
+        run: docker run iris-api

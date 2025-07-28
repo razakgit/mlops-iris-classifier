@@ -85,7 +85,10 @@ def retrain_model():
     model = RandomForestClassifier()
     model.fit(X, y)
 
-    dump(model, "model.joblib")  # overwrite existing model
-    model = load("model.joblib")  # reload into memory
+    dump(model, "models/best_model.pkl")
+    model = joblib.load("models/best_model.pkl")
+
+    #dump(model, "model.joblib")  # overwrite existing model
+    #model = load("model.joblib")  # reload into memory
 
     return {"message": "Model retrained with feedback data."}
