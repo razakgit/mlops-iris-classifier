@@ -8,7 +8,7 @@ import pandas as pd
 import os
 
 
-from joblib import load, dump
+from joblib import  dump
 from sklearn.ensemble import RandomForestClassifier
 import datetime
 
@@ -23,11 +23,13 @@ model = joblib.load("models/best_model.pkl")
 # Logging
 logging.basicConfig(filename="logs/prediction.log", level=logging.INFO)
 
+
 class IrisInput(BaseModel):
     sepal_length: float
     sepal_width: float
     petal_length: float
     petal_width: float
+
 
 class FeedbackData(BaseModel):
     sepal_length: float
@@ -35,6 +37,7 @@ class FeedbackData(BaseModel):
     petal_length: float
     petal_width: float
     target: int
+
 
 @app.post("/feedback")
 def collect_feedback(data: FeedbackData):
@@ -55,15 +58,18 @@ def collect_feedback(data: FeedbackData):
         print("No feedback.csv found.")
     return {"message": "Feedback received"}
 
+
 @app.get("/")
 def read_root():
     current_time = datetime.datetime.now().isoformat()
     return {"message": "Iris Classifier API is up1", "time": current_time}
 
+
 @app.get("/metrics")
 def metrics():
     Instrumentator().instrument(app).expose(app)
     return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
+
 
 @app.post("/predict")
 def predict(input: IrisInput):
@@ -89,6 +95,7 @@ def predict(input: IrisInput):
         prediction = None
     logging.info(f"Input: {input.dict()}, Prediction: {prediction}")
     return {"prediction": int(prediction)}
+
 
 @app.post("/retrain")
 def retrain_model():

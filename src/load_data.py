@@ -1,4 +1,3 @@
-# src/load_data.py
 from sklearn.datasets import load_iris
 
 
@@ -15,6 +14,7 @@ def save_iris():
     df['target'] = data.target
     df.to_csv("data/iris.csv", index=False)
     print("Iris dataset saved to data/iris.csv")
+
 
 if __name__ == "__main__":
     save_iris()
