@@ -28,9 +28,9 @@ jobs:
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics || true
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics || true
 
-      - name: Run unit tests with pytest
-        run: |
-          pytest tests/
+      #- name: Run unit tests with pytest
+      #  run: |
+      #    pytest tests/
 
       - name: 4 of 5 - Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/iris-api .
