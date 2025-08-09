@@ -7,6 +7,7 @@ from prometheus_client import start_http_server, Summary, Counter
 import pandas as pd
 import os
 
+
 from joblib import load, dump
 from sklearn.ensemble import RandomForestClassifier
 import datetime
@@ -61,6 +62,7 @@ def read_root():
 
 @app.get("/metrics")
 def metrics():
+    Instrumentator().instrument(app).expose(app)
     return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
 
 @app.post("/predict")
