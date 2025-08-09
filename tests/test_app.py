@@ -15,7 +15,7 @@ def test_read_root():
     response = client.get("/")
     assert response.status_code == 200
     assert "message" in response.json()
-    assert response.json()["message"] == "Iris Classifier API is up"
+    assert response.json()["message"] == "Iris Classifier API is up1"
 
 def test_predict_valid():
     payload = {
