@@ -1,6 +1,6 @@
 # src/load_data.py
 from sklearn.datasets import load_iris
-import pandas as pd
+
 
 def save_iris():
     data = load_iris(as_frame=True)

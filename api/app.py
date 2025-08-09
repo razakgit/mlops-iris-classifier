@@ -3,7 +3,7 @@ from pydantic import BaseModel
 import joblib
 import logging
 from prometheus_fastapi_instrumentator import Instrumentator
-from prometheus_client import start_http_server, Summary, Counter
+from prometheus_client import Counter
 import pandas as pd
 import os
 
