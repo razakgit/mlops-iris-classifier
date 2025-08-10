@@ -2,6 +2,6 @@ global:
   scrape_interval: 15s
 
 scrape_configs:
-  - job_name: "fastapi_app"
+  - job_name: 'fastapi_app'
     static_configs:
-      - targets: ["app:8000"]  # "app" matches the service name in docker-compose
+      - targets: ['app:8000']

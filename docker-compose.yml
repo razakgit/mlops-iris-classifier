@@ -5,16 +5,18 @@ services:
     build: .
     container_name: iris_api
     ports:
-      - "8000:8000"
+      - "8001:8000"
     networks:
       - monitoring
     depends_on:
       - prometheus
     environment:
       - PROMETHEUS_MULTIPROC_DIR=/tmp
+    volumes:
+      - .:/app  # hot reload: mount current folder into container
 
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus
     container_name: prometheus
     ports:
       - "9090:9090"
@@ -25,9 +27,9 @@ services:
 
   grafana:
     image: grafana/grafana:latest
-    container_name: grafana
+    container_name: grafana3
     ports:
-      - "3000:3000"
+      - "3001:3000"
     networks:
       - monitoring
     depends_on:
