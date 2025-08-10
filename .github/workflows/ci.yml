@@ -34,6 +34,8 @@ jobs:
 
       - name: (6 of 8) - Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/iris-api .
+             docker tag ${{ secrets.DOCKER_USERNAME }}/iris-api iris-api
+
 
       - name: (7 of 8) - Push Docker image
         run: |
@@ -41,4 +43,4 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/iris-api
           
       - name: (8 of 8) - Run Docker container
-        run: docker run ${{ secrets.DOCKER_USERNAME }}/iris-api
+        run: docker run iris-api
