@@ -41,4 +41,4 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/iris-api
           
       - name: (8 of 8) - Run Docker container
-        run: docker run iris-api
+        run: docker run ${{ secrets.DOCKER_USERNAME }}/iris-api
