@@ -19,8 +19,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-     #     pip install flake8 pytest
-          
+         
 
       - name: (4 of 8) Lint code with flake8
         run: |
@@ -29,12 +28,12 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics || true
 
       - name: (5 of 8 ) Run unit tests with pytest
-        run: |
-          pytest tests/
+        run: pytest tests/
 
       - name: (6 of 8) - Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/iris-api .
-             docker tag ${{ secrets.DOCKER_USERNAME }}/iris-api iris-api
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/iris-api .
+          docker tag ${{ secrets.DOCKER_USERNAME }}/iris-api iris-api
 
 
       - name: (7 of 8) - Push Docker image
