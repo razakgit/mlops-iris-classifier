@@ -35,11 +35,25 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USERNAME }}/iris-api .
           docker tag ${{ secrets.DOCKER_USERNAME }}/iris-api iris-api
 
-
       - name: (7 of 8) - Push Docker image
         run: |
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker push ${{ secrets.DOCKER_USERNAME }}/iris-api
+
+      - name: (8 of 8) - Run container and verify /docs endpoint
+        run: |
+          # Start container in background and map port 8000
+          docker run -d -p 8000:8000 --name iris-api ${{ secrets.DOCKER_USERNAME }}/iris-api
           
-      - name: (8 of 8) - Run Docker container
-        run: docker run iris-api
+          # Give the server time to start
+          sleep 5
+          
+          # Check if the /docs endpoint responds
+          curl -f http://localhost:8000/docs || (echo " X /docs endpoint did not respond" && exit 1)
+          
+          # Print logs for reference
+          docker logs iris-api
+          
+          # Stop and remove container so job finishes
+          docker stop iris-api
+          docker rm iris-api
