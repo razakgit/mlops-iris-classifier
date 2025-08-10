@@ -65,6 +65,4 @@ def test_retrain_no_feedback(monkeypatch):
 
 def test_metrics_endpoint():
     response = client.get("/metrics")
-    # The /metrics endpoint may not be implemented correctly in the code above,
-    # so we check for 200 or 500 (if not implemented)
     assert response.status_code in (200, 500)
