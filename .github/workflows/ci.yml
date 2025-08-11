@@ -40,7 +40,7 @@ jobs:
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker push ${{ secrets.DOCKER_USERNAME }}/iris-api
 
-      - name: (8 of 8) - Run container and verify /docs endpoint
+      - name: (8 of 8) - Run  container and verify /docs endpoints
         run: |
           # Start container in background and map port 8000
           docker run -d -p 8000:8000 --name iris-api ${{ secrets.DOCKER_USERNAME }}/iris-api
